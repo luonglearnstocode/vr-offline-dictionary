@@ -1,0 +1,4 @@
+*.csv
+*.xls
+input.json
+dict.json
