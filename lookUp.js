@@ -5,11 +5,11 @@ const to =  process.argv[3]
 const word = process.argv.slice(4, process.argv.length).join(' ')
 
 const argToTerm = (language, addTo) => {
-  return language.toUpperCase() + '-' + addTo
+  return language + addTo
 }
 
-const input = argToTerm(from, 'term')
-const output = [argToTerm(to, 'term'), argToTerm(to, 'usageNote')]
+const input = argToTerm(from, 'Term')
+const output = [argToTerm(to, 'Term'), argToTerm(to, 'UsageNote')]
 
 // find the object contain the word to be translated
 const result = dict.find(row => row[input] === word)

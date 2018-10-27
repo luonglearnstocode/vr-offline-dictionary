@@ -14,7 +14,7 @@ const db = firebase.firestore()
 db.settings({ timestampsInSnapshots: true });
 
 dict.forEach(word => {
-  db.collection('words').add(word)
+  db.collection('dict').add(word)
   .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);
   })

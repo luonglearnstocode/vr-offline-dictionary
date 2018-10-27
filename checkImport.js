@@ -15,7 +15,7 @@ firebase.initializeApp(config);
 const db = firebase.firestore()
 db.settings({ timestampsInSnapshots: true });
 
-db.collection('words').get()
+db.collection('dict').get()
   .then((snapshot) => {
     console.log('number of documents from firestore: ', snapshot.size)
   })
