@@ -1,5 +1,7 @@
-var firebase = require("firebase");
 const dict = require('./input.json')
+var firebase = require("firebase");
+
+console.log('number of words:', dict.length)
 
 var config = {
   apiKey: "AIzaSyAvDep8RmCoR8xabSQRXY6_LGa3BHBiPfU",
@@ -13,14 +15,10 @@ firebase.initializeApp(config);
 const db = firebase.firestore()
 db.settings({ timestampsInSnapshots: true });
 
-dict.forEach(word => {
-  db.collection('words').add(word)
-  .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
+db.collection('words').get()
+  .then((snapshot) => {
+    console.log('number of documents from firestore: ', snapshot.size)
   })
-  .catch(function(error) {
-    console.error("Error adding document: ", error);
+  .catch((err) => {
+    console.log('Error getting documents', err);
   });
-});
-
-
