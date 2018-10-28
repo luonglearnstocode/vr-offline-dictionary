@@ -2,6 +2,8 @@
 *.xls
 input.json
 dict.json
+duplicates.json
+newInput.json
 
 # Created by https://www.gitignore.io/api/node
 
