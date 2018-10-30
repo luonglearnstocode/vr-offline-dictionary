@@ -1,4 +1,4 @@
-const dict = require('./input.json')
+const dict = require('./newInput.json')
 var firebase = require("firebase");
 
 console.log('number of words:', dict.length)
@@ -15,7 +15,7 @@ firebase.initializeApp(config);
 const db = firebase.firestore()
 db.settings({ timestampsInSnapshots: true });
 
-db.collection('dict').get()
+db.collection('words').get()
   .then((snapshot) => {
     console.log('number of documents from firestore: ', snapshot.size)
   })

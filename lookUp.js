@@ -1,4 +1,4 @@
-const dict = require('./input.json')
+const dict = require('./newInput.json')
 
 const from = process.argv[2]
 const to =  process.argv[3]

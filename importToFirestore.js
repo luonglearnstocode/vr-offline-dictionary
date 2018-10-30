@@ -1,5 +1,5 @@
 var firebase = require("firebase");
-const dict = require('./input.json')
+const dict = require('./newInput.json')
 
 var config = {
   apiKey: "AIzaSyAvDep8RmCoR8xabSQRXY6_LGa3BHBiPfU",
@@ -14,7 +14,7 @@ const db = firebase.firestore()
 db.settings({ timestampsInSnapshots: true });
 
 dict.forEach(word => {
-  db.collection('dict').add(word)
+  db.collection('words').add(word)
   .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);
   })

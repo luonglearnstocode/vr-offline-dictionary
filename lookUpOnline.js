@@ -1,6 +1,4 @@
 // args to query
-const dict = require('./input.json')
-
 const from = process.argv[2]
 const to =  process.argv[3]
 const word = process.argv.slice(4, process.argv.length).join(' ')
@@ -11,6 +9,8 @@ const argToTerm = (language, addTo) => {
 
 const input = argToTerm(from, 'Term')
 const output = [argToTerm(to, 'Term'), argToTerm(to, 'UsageNote')]
+
+console.log(input, word)
 
 // connect to firestore
 var firebase = require("firebase");
@@ -26,8 +26,9 @@ var config = {
 firebase.initializeApp(config);
 const db = firebase.firestore()
 db.settings({ timestampsInSnapshots: true });
-console.log(input, word)
-db.collection('dict').where(input, '==', word).get()
+
+// query from firestore
+db.collection('words').where(input, '==', word).get()
   .then(snapshot => {
     snapshot.forEach(doc => {
       console.log(doc.id, '=>', doc.data());
