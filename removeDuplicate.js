@@ -1,11 +1,14 @@
 const dict = require('./input.json')
 
 // https://stackoverflow.com/questions/2218999/remove-duplicates-from-an-array-of-objects-in-javascript
-newDict = dict.filter((thing, index, self) =>
+// in reversed order, so that the latest data will be kept
+const newDict = [...dict].reverse().filter((thing, index, self) =>
   index === self.findIndex((t) => (
     t.RailLexicID === thing.RailLexicID 
 )))
 
+// sort words in ascending order of RailLexicID
+newDict.sort((a, b) => a.RailLexicID < b.RailLexicID ? -1 : 1) 
 console.log(newDict.length)
 
 var fs = require("fs");
