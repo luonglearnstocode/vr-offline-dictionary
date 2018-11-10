@@ -4,6 +4,7 @@ input.json
 dict.json
 duplicates.json
 newInput.json
+words.json
 
 # Created by https://www.gitignore.io/api/node
 
