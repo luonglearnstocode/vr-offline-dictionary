@@ -5,42 +5,44 @@ let words = []
 for (word of dict) {
   if ('fiTerm' in word) {
     words.push({
-      word: word.fiTerm,
+      word: word.fiTerm.trim(), // remove leading and trailing white spaces 
       language: 'fi'
     })
   }
   if ('enTerm' in word) {
     words.push({
-      word: word.enTerm,
+      word: word.enTerm.trim(),
       language: 'en'
     })
   }
   if ('deTerm' in word) {
     words.push({
-      word: word.deTerm,
+      word: word.deTerm.trim(),
       language: 'de'
     })
   }
   if ('daTerm' in word) {
     words.push({
-      word: word.daTerm,
+      word: word.daTerm.trim(),
       language: 'da'
     })
   }
   if ('noTerm' in word) {
     words.push({
-      word: word.noTerm,
+      word: word.noTerm.trim(),
       language: 'no'
     })
   }
   if ('svTerm' in word) {
     words.push({
-      word: word.svTerm,
+      word: word.svTerm.trim(),
       language: 'sv'
     })
   }
 }
 
+// sort words in ascending order of word
+words.sort((a, b) => a.word.toLowerCase() < b.word.toLowerCase() ? -1 : 1) 
 
 var fs = require("fs");
 fs.writeFile("./words.json", JSON.stringify(words, null, 4), (err) => {
